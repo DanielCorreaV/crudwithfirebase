@@ -115,6 +115,29 @@ ion-back-button {
   z-index: 100;
 }
 
+.delete-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.delete-button {
+  --background: #e63946;  /* Rojo intenso */
+  --background-hover: #d62839;  /* Rojo más oscuro al pasar el mouse */
+  --color: white;  /* Texto en blanco */
+  --border-radius: 8px;
+  --padding: 12px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05); /* Pequeño zoom al pasar el mouse */
+  }
+}
+
+
 ion-back-button::part(text) {
   display: none;
 }

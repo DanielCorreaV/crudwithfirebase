@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'task-popover',
@@ -7,20 +8,31 @@ import { PopoverController } from '@ionic/angular';
   styleUrls: ['./task-popover.component.scss'],
   standalone: false
 })
-export class TaskPopoverComponent {
-  constructor(private popoverCtrl: PopoverController) {}
+export class TaskPopoverComponent implements OnInit {
+  @Input() taskID: string = "";
+
+  constructor(private popoverCtrl: PopoverController, private router: Router) {}
+
+  ngOnInit() { 
+    
+  }
+
+  TaskAdmAction(Action: string) {
+    console.log('Editar tarea:', this.taskID);
+    this.router.navigate([`tasks/tasks-view/${this.taskID}/${Action}`]); 
+    this.closePopover();
+  }
 
   editTask() {
-    console.log('Editar tarea');
-    this.closePopover();
+    this.TaskAdmAction('editable');
   }
 
   deleteTask() {
-    console.log('Eliminar tarea');
-    this.closePopover();
+    this.TaskAdmAction('delete');
   }
 
   closePopover() {
-    this.popoverCtrl.dismiss(); 
+    this.popoverCtrl.dismiss();
   }
 }
+

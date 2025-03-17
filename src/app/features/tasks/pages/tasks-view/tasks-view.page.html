@@ -14,21 +14,28 @@
       <ion-label position="floating">Task Title</ion-label>
       <ion-input formControlName="title" type="text" placeholder="Enter task title" [readonly]="!isEditing"></ion-input>
     </ion-item>
+    <ion-text color="danger" *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+      ⚠️ Title is required.
+    </ion-text>
 
     <!-- State -->
     <ion-item [disabled]="!isEditing">
       <ion-label>Current Status</ion-label>
-      <ion-select formControlName="state" interface="popover" [value]="task.done">
-        <ion-select-option value="false">In Progress</ion-select-option>
-        <ion-select-option value="true">Completed</ion-select-option>
+      <ion-select formControlName="state" interface="popover">
+        <ion-select-option [value]="false">In Progress</ion-select-option>
+        <ion-select-option [value]="true">Completed</ion-select-option>
       </ion-select>
     </ion-item>
+    
 
     <!-- Description -->
     <ion-item>
       <ion-label position="floating">Description</ion-label>
       <ion-textarea formControlName="description" placeholder="Describe your task here..." [readonly]="!isEditing"></ion-textarea>
     </ion-item>
+    <ion-text color="danger" *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
+      ⚠️ Description is required.
+    </ion-text>
 
     <!-- Edit/Save Button -->
     <ion-button expand="full" (click)="toggleEditMode()">
@@ -36,4 +43,13 @@
       {{ isEditing ? 'Save Task' : 'Edit Task' }}
     </ion-button>
   </form>
+  <div class="delete-button-container">
+    <ion-button color="danger" (click)="deleteTask()" class="delete-button">
+      <ion-icon slot="start" name="trash-outline"></ion-icon>
+      Delete Task
+    </ion-button>
+  </div>
+  
+  
+
 </ion-content>

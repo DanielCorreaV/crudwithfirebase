@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from 'src/app/models/task.model'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { Timestamp } from 'firebase/firestore';
 
@@ -28,7 +28,8 @@ export class TasksViewPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private route: Router
   ) {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
@@ -37,6 +38,10 @@ export class TasksViewPage implements OnInit {
     });
 
     this.TaskID = this.actRoute.snapshot.paramMap.get('id') || '';
+    if(this.actRoute.snapshot.paramMap.get('param')=="editable"){
+      this.isEditing=true;
+    }
+
   }
 
   ngOnInit(): void {
@@ -46,19 +51,19 @@ export class TasksViewPage implements OnInit {
           ...task,
           date: task.date instanceof Timestamp ? task.date.toDate() : task.date
         };
-
-        
         this.taskForm.patchValue({
-          title: this.task.title || '',
-          state: this.task.done || false, 
-          description: this.task.description || ''
+          title: this.task.title,
+          state: this.task.done,
+          description: this.task.description
         });
-
         this.isLoaded = true;
         this.currentState=  task.done.toString();
-        console.log(this.currentState)
+
+        if(this.actRoute.snapshot.paramMap.get('param')=="delete"){
+          this.deleteTask();
+        }
       });
-    }
+    }	
   }
 
   submitForm() {
@@ -82,6 +87,7 @@ export class TasksViewPage implements OnInit {
       });
     } else {
       console.log('Invalid form');
+      this.isEditing=true;
     }
   }
 
@@ -92,4 +98,20 @@ export class TasksViewPage implements OnInit {
       this.submitForm(); 
     }
   }
+
+  deleteTask() {
+    if (this.task.id) {
+      this.taskService.deleteTask(this.task.id)
+        .then(() => {
+          console.log('Task deleted successfully!');
+          this.route.navigate(['/tasks/tasks-home']); 
+        })
+        .catch(error => {
+          console.error('Error deleting task:', error);
+        });
+    } else {
+      console.log('Invalid task ID');
+    }
+  }
+  
 }

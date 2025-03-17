@@ -21,7 +21,7 @@ import { TaskRoutingModule } from './task-routing.module';
     ReactiveFormsModule,
     SharedModule,
     RouterLink,
-    TaskRoutingModule
+    TaskRoutingModule,
   ],
   exports:[TaskItemComponent, TaskPopoverComponent, TaskFormComponent]
 })

@@ -15,23 +15,21 @@ export class TaskService {
   getTasks(): Observable<Task[]> {
     return collectionData(this.tasksCollection, { idField: 'id' }) as Observable<Task[]>;
   }
-
+  // Obtener todas las tareas completadas
   getTasksCompleted(completed: boolean): Observable<Task[]> {
     const q = query(this.tasksCollection, where('done', '==', completed));
     return collectionData(q, { idField: 'id' }) as Observable<Task[]>;
   }
-
+  // Obtener una tarea en base a su id
   getTaskById(id: string): Observable<Task> {
     const taskDocRef = doc(this.firestore, 'Tasks', id);
     return docData(taskDocRef, { idField: 'id' }) as Observable<Task>;
   }
-
-
+  // Cambiar estado de las tareas (complete / in progress)
   changeTaskState(taskId: string, completed: boolean): Promise<void> {
     const taskRef = doc(this.firestore, `Tasks/${taskId}`); 
     return updateDoc(taskRef, { done: completed }); 
   }
-  
 
   // Crear tarea
   addTask(task: Task) {
@@ -48,7 +46,7 @@ export class TaskService {
 
   // Eliminar tarea
   deleteTask(id: string) {
-    const taskRef = doc(this.firestore, `tasks/${id}`);
+    const taskRef = doc(this.firestore, `Tasks/${id}`);
     return deleteDoc(taskRef);
   }
 }

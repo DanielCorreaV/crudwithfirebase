@@ -16,7 +16,7 @@
         </ion-item>
       </div>
       <ion-text color="danger" *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
-        ⚠️ El título es obligatorio.
+        ⚠️ Title is required.
       </ion-text>
 
       <div class="form-group">
@@ -26,7 +26,7 @@
         </ion-item>
       </div>
       <ion-text color="danger" *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
-        ⚠️ La descripción es obligatoria.
+        ⚠️ Description is required.
       </ion-text>
 
       <ion-button expand="full" type="submit" [disabled]="taskForm.invalid">

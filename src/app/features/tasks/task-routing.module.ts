@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'tasks-view/:id',
     component: TasksViewPage
+  },
+  {
+    path: 'tasks-view/:id/:param',
+    component: TasksViewPage
   }
 
 ];

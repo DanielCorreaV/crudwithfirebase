@@ -31,7 +31,10 @@ export class TaskItemComponent implements OnInit {
     const popover = await this.popoverctrl.create({
       component: TaskPopoverComponent,
       event: ev,
-      translucent: true
+      translucent: true,
+      componentProps: {
+        taskID: this.task.id 
+      }
     });
 
     await popover.present();
