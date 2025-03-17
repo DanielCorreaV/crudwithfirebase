@@ -1,6 +1,6 @@
 <div class="overlay">
   <div class="popup">
-    <ion-icon [name]="icon" class="icon animated"></ion-icon>
+    <ion-icon [name]="icon" class="icon animated"   [style.color]="'var(' + color + ')'"></ion-icon>
     <p>{{ message }}</p>
     <div class="buttons">
       @if(showbuttons){

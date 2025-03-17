@@ -24,6 +24,9 @@ export class TasksViewPage implements OnInit {
   TaskID: string = "";
   isLoaded: boolean = false; 
   currentState: string= "false";
+  showInvalidnotification: boolean= false;
+  showDeletenotification: boolean= false;
+  showChangednotification: boolean= false;
 
   constructor(
     private fb: FormBuilder,
@@ -81,12 +84,14 @@ export class TasksViewPage implements OnInit {
 
       this.taskService.updateTask(this.TaskID, updatedTask).then(() => {
         console.log('Task updated successfully!');
+        this.showChangednotification=true;
         this.isEditing = false;
       }).catch(error => {
         console.error('Error updating task:', error);
       });
     } else {
       console.log('Invalid form');
+      this.showInvalidnotification = true
       this.isEditing=true;
     }
   }
@@ -101,6 +106,7 @@ export class TasksViewPage implements OnInit {
 
   deleteTask() {
     if (this.task.id) {
+      this.showDeletenotification=true;
       this.taskService.deleteTask(this.task.id)
         .then(() => {
           console.log('Task deleted successfully!');

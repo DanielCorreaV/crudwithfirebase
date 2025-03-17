@@ -49,7 +49,18 @@
       Delete Task
     </ion-button>
   </div>
-  
-  
 
 </ion-content>
+
+@if (showInvalidnotification) {
+  <app-notification message="Invalid Fields!" icon="ban" color="--ion-color-danger" (confirm)="showInvalidnotification = false"></app-notification>
+}
+
+@if (showDeletenotification) {
+  <app-notification message="Task Deleted Successfully" icon="trash" color="--ion-color-danger" (confirm)="showDeletenotification = false"></app-notification>
+}
+
+@if (showChangednotification) {
+  <app-notification message="Task Updated Succesfully" icon="checkmark-circle" (confirm)="showChangednotification = false"></app-notification>
+}
+

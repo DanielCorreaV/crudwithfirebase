@@ -24,13 +24,20 @@
   
   .icon {
     font-size: 50px;
-    color: var(--ion-color-primary);
   }
   
   .buttons {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+  }
+
+  .success {
+    color: var(--ion-color-success);
+  }
+  
+  .danger {
+    color: red;
   }
 
   @keyframes pop {
@@ -49,7 +56,6 @@
   
   .animated {
     font-size: 50px;
-    color: var(--ion-color-success);
     animation: pop 0.3s ease-in-out;
   }
   

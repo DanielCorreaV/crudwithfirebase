@@ -13,6 +13,7 @@ export class NotificationComponent  implements OnInit {
   @Input() time: number = 2000;
   showbuttons: boolean=false;
   @Output() confirm = new EventEmitter<boolean>();
+  @Input() color: string = '--ion-color-success';
 
   constructor() { }
 
