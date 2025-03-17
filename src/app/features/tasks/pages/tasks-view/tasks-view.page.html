@@ -1,0 +1,39 @@
+<app-header title="Task Details"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-back-button defaultHref="/tasks/tasks-home"></ion-back-button>
+
+  <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+    <div class="form-header">
+      <h2>{{ task.title }}</h2>
+      <p>Created on: {{ task.date | date:'short' }}</p> 
+    </div>
+
+    <!-- Title -->
+    <ion-item>
+      <ion-label position="floating">Task Title</ion-label>
+      <ion-input formControlName="title" type="text" placeholder="Enter task title" [readonly]="!isEditing"></ion-input>
+    </ion-item>
+
+    <!-- State -->
+    <ion-item [disabled]="!isEditing">
+      <ion-label>Current Status</ion-label>
+      <ion-select formControlName="state" interface="popover" [value]="task.done">
+        <ion-select-option value="false">In Progress</ion-select-option>
+        <ion-select-option value="true">Completed</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" placeholder="Describe your task here..." [readonly]="!isEditing"></ion-textarea>
+    </ion-item>
+
+    <!-- Edit/Save Button -->
+    <ion-button expand="full" (click)="toggleEditMode()">
+      <ion-icon [name]="isEditing ? 'save-outline' : 'create-outline'" slot="start"></ion-icon>
+      {{ isEditing ? 'Save Task' : 'Edit Task' }}
+    </ion-button>
+  </form>
+</ion-content>

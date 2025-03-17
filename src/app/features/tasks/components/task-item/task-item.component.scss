@@ -1,0 +1,26 @@
+.task-row {
+    align-items: center; 
+    padding: 8px;
+    border-bottom: 1px solid var(--ion-color-light); 
+  }
+  
+  .task-text {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    flex-grow: 1; 
+  }
+  
+  .options-card {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .task-row {
+    position: relative;
+  }
+  

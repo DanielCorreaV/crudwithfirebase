@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'title-font';
+    src: url('/assets/fonts/AlfaSlabOne-Regular.ttf') format('truetype');
+  }
+
+  ion-title{
+    font-family: 'title-font';
+    font-size: 24px;
+  }

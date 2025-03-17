@@ -1,0 +1,15 @@
+<ion-content class="popover-content">
+  <ion-list lines="none" class="edit-item">
+    <ion-item button (click)="editTask()">
+      <ion-label>Editar</ion-label>
+      <ion-icon name="create-outline" slot="end"></ion-icon>
+    </ion-item>
+    
+    <ion-item button (click)="deleteTask()" class="delete-item">
+      <ion-label>Eliminar</ion-label>
+      <ion-icon name="trash-outline" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

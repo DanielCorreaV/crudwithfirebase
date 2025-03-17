@@ -1,0 +1,51 @@
+.content {
+    --background: #f4f4f4; /* Fondo gris claro */
+    padding: 16px;
+  }
+  
+  .filter-row {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  .filter-item {
+    background: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .filter-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .status-select {
+    --placeholder-color: #666;
+    --background: #ffffff;
+    --color: #333;
+  }
+  
+  .task-list {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    height:  74vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}

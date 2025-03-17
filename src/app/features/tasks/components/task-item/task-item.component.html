@@ -1,0 +1,22 @@
+<ion-row class="task-row">
+  <ion-col size="auto">
+    <ion-checkbox (ionChange)="changeTaskState($event.detail.checked)" checked="{{task.done}}"></ion-checkbox>
+  </ion-col>
+
+  <ion-col class="task-text" [routerLink]="['../tasks-view', task.id]">
+    {{ task.title }}
+  </ion-col>
+  
+
+  <ion-col size="auto">
+    <ion-button fill="clear" (click)="openPopover($event)">
+      <ion-icon name="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-col>   
+</ion-row>
+
+
+
+  
+
+

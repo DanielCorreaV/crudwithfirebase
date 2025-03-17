@@ -1,0 +1,52 @@
+<app-header title="TO DO LIST"></app-header>
+
+<ion-content [fullscreen]="false" class="content">
+  <ion-grid>
+    <ion-row class="filter-row">
+      <ion-col size="6">
+        <ion-item lines="none" class="filter-item">
+          <ion-label class="filter-label">
+            <ion-button (click)="openForm()">
+              New Task
+            </ion-button>  
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="filter-item">
+          <ion-label class="filter-label">Status:</ion-label>
+          <ion-select class="status-select" value="2" (ionChange)="filterbyStatus($event.target.value)">
+            <ion-select-option value=1>All</ion-select-option>
+            <ion-select-option value=2>In Progress</ion-select-option>
+            <ion-select-option value=3>Completed</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="task-list">
+
+  @for(task of tasks$ | async; track task.id){
+    <task-item [task]="task" (isStateChanged)="openChangeNotification()"></task-item>
+  }
+    
+  </ion-list>
+
+  
+</ion-content>
+
+@if(isFormOpen){
+  <app-task-form class="fullscreen" (taskCreated)="addTask($event)" (close)="isFormOpen=false"></app-task-form>
+}
+
+@if(showInsertnotification){
+  <app-notification message="Task created Succesfully" icon="checkmark-circle-outline" (confirm)="showInsertnotification=false"></app-notification>
+}
+
+@if(showChangeNotification){
+  <app-notification message="Task Changed Succesfully" icon="checkmark-circle-outline" (confirm)="showChangeNotification=false"></app-notification>
+}
+
+
+

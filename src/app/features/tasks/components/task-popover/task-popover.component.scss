@@ -1,0 +1,31 @@
+.popover-content {
+    --background: white;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  
+  ion-item {
+    font-size: 16px;
+    font-weight: 500;
+    --padding-start: 12px;
+    --inner-padding-end: 12px;
+  }
+  
+  ion-icon {
+    font-size: 20px;
+    color: var(--ion-color-primary);
+  }
+  
+  .delete-item ion-icon {
+    color: var(--ion-color-danger);
+  }
+  
+  .delete-item {
+    color: var(--ion-color-danger);
+  }
+
+  .edit-item {
+    color: var(--ion-color-primary);
+  }
+
+  
