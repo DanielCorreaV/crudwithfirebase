@@ -9,7 +9,8 @@ Esta aplicaciòn consiste en una simple y cencilla TO-DO-LIST, cuenta con un dis
 3. [Instalación](#instalación)
 4. [Uso](#uso)
 6. [Tecnologías Usadas](#tecnologías-usadas)
-7. [Autor](#autor)
+7. [Firebase-firestore](#firebase-firestore)
+8. [Autor](#autor)
 
 
 ---
@@ -68,14 +69,20 @@ Pagina de vista: Te muestra los detalles de la tarea en cuestion, y tambien te o
 
 ![image](https://github.com/user-attachments/assets/e46e5bd7-7a6f-4d90-b416-b03c3b085b31)
 
-
-
-
 ## Tecnologías Usadas
 - **Ionic** (Framework para aplicaciones híbridas)
 - **Angular** (Framework frontend)
 - **TypeScript** (Superconjunto de JavaScript)
 - **FireBase/FireStore** (https://firebase.google.com/docs/firestore?hl=es-419)
+
+## Firebase-firestore
+
+La configuraciòn de firebase se realiza mediante el uso del coremodule, este ocupa de las credenciales alojadas en enviroments para dar acceso, estas credenciales se hacen referencia dentro de los providers del core module a travez de los metodos: 
+
+- initializeApp y provideFirebaseApp de @angular/fire/app.
+- provideFirestore y getFirestore de @angular/fire/firestore.
+
+finalmente estas configuraciones se dirigen al app module a travez del importe del core module entre sus importes.
 
 ## Autor
 - **Nombre**: [Daniel Correa Vega](https://github.com/DanielCorreaV)
