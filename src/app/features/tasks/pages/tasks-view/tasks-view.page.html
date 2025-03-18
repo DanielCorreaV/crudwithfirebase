@@ -3,7 +3,7 @@
 <ion-content class="ion-padding">
   <ion-back-button defaultHref="/tasks/tasks-home"></ion-back-button>
 
-  <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="taskForm" (ngSubmit)="submitForm()" style="margin:auto;">
     <div class="form-header">
       <h2>{{ task.title }}</h2>
       <p>Created on: {{ task.date | date:'short' }}</p> 
@@ -20,7 +20,7 @@
 
     <!-- State -->
     <ion-item [disabled]="!isEditing">
-      <ion-label>Current Status</ion-label>
+      <ion-label>Current Status:</ion-label>
       <ion-select formControlName="state" interface="popover">
         <ion-select-option [value]="false">In Progress</ion-select-option>
         <ion-select-option [value]="true">Completed</ion-select-option>
