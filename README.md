@@ -66,7 +66,8 @@ Pagina de inicio: Muestra las tareas que tengas registradas. te ofrece la posibi
 
 Pagina de vista: Te muestra los detalles de la tarea en cuestion, y tambien te ofrece las posibilidades de editar y eliminar.
 
-![image](https://github.com/user-attachments/assets/fb37a10c-da08-4c8c-a2ed-ad9d4070f5db)
+![image](https://github.com/user-attachments/assets/e46e5bd7-7a6f-4d90-b416-b03c3b085b31)
+
 
 
 
